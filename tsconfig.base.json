@@ -14,7 +14,9 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@randomfighter/starships-api": ["modules/starships/api/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

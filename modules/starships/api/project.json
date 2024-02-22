@@ -1,0 +1,20 @@
+{
+  "name": "starships-api",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "modules/starships/api/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/modules/starships/api",
+        "tsConfig": "modules/starships/api/tsconfig.lib.json",
+        "packageJson": "modules/starships/api/package.json",
+        "main": "modules/starships/api/src/index.ts",
+        "assets": ["modules/starships/api/*.md"]
+      }
+    }
+  },
+  "tags": []
+}
