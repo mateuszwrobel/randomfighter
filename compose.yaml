@@ -1,0 +1,18 @@
+services:
+  "db":
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DB}
+      retries: 10
+    ports:
+      - 5432:5432
+    networks:
+      - randomfighter
+
+
+networks:
+  randomfighter:
+    external: false

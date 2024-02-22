@@ -1,0 +1,6 @@
+const path = require('path');
+module.exports = {
+   'seeders-path': path.resolve('database/randomfighter', 'seeders'),
+   'migrations-path': path.resolve('database/randomfighter', 'migrations'),
+   'config': path.resolve('database/randomfighter', 'config.js'),
+}

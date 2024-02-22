@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: 'starships-api',
+  displayName: 'entities',
   preset: '../../../jest.preset.js',
   testEnvironment: 'node',
   transform: {
