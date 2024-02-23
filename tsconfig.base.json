@@ -15,8 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@randomfighter/database": ["modules/database/src/index.ts"],
       "@randomfighter/starships-api": ["modules/starships/api/src/index.ts"]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": ["node_modules", "tmp"],
+  "include": ["types/**/*.d.ts"]
 }

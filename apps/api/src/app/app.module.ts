@@ -7,19 +7,11 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
 import { StarshipsApiModule } from '@randomfighter/starships-api';
 import { SequelizeModule } from '@nestjs/sequelize';
+import { config } from '@randomfighter/database';
 
 @Module({
   imports: [
-    SequelizeModule.forRoot({
-      dialect: 'postgres',
-      host: 'db',
-      port: 5432,
-      username: process.env.DB_USER,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_DB,
-      autoLoadModels: true,
-      synchronize: true,
-    }),
+    SequelizeModule.forRoot(config),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), '../app/schema.gql'),
