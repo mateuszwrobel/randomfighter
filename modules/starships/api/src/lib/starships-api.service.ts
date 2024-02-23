@@ -7,7 +7,6 @@ export class StarshipsApiService {
   constructor(@InjectModel(Starship) private starshipModel: typeof Starship) {}
 
   async findAll(): Promise<Starship[]> {
-    console.log('findAll');
     return this.starshipModel.findAll();
   }
 

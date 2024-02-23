@@ -9,7 +9,6 @@ export class StarshipsApiResolver {
   @Query(() => [Starship])
   async getAllStarships(): Promise<Starship[]> {
     return this.starshipsApiService.findAll().then((starships) => {
-      console.log(starships);
       return starships;
     });
   }
