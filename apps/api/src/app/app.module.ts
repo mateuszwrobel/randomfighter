@@ -1,7 +1,5 @@
 import { Module } from '@nestjs/common';
 
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
@@ -14,11 +12,9 @@ import { config } from '@randomfighter/database';
     SequelizeModule.forRoot(config),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      autoSchemaFile: join(process.cwd(), '../app/schema.gql'),
+      autoSchemaFile: join(process.cwd(), './apps/api/schema.gql'),
     }),
     StarshipsApiModule,
   ],
-  // controllers: [AppController],
-  // providers: [AppService],
 })
 export class AppModule {}

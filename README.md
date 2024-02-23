@@ -3,12 +3,12 @@
 - [x] use graphql
 - [x] use angular
 - [x] use angular material
-- [ ] use postgres
+- [x] use postgres
 - [ ] use swagger/openapi
 - Starship module
   - [x] add starships module
-  - [ ] add starships entity
-  - [ ] add starships table in database
+  - [x] add starships entity
+  - [x] add starships table in database
   - [ ] add starships POST endpoint
   - [ ] add starships GET endpoint
   - [ ] add starships PUT endpoint
