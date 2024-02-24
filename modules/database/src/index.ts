@@ -1,2 +1,2 @@
 export * from './lib/migrator';
-export { config } from './lib/config';
+export { config, testConfig } from './lib/config';

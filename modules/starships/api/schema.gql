@@ -8,9 +8,7 @@ type Starship {
   cargo_capacity: String!
   consumables: String!
   cost_in_credits: String!
-  created: String!
   crew: String!
-  edited: String!
   hyperdrive_rating: String!
   length: String!
   manufacturer: String!
@@ -18,14 +16,64 @@ type Starship {
   model: String!
   name: String!
   passengers: String!
-  films: [String!]!
-  pilots: [String!]!
+  films: String!
+  pilots: String!
   starship_class: String!
   url: String!
+  createdAt: String!
+  updatedAt: String!
 }
 
 type Query {
   getAllStarships: [Starship!]!
   getRandomStarship: Starship!
   getStarshipById(id: Float!): Starship!
+}
+
+type Mutation {
+  createStarship(starship: CreateStarship!): Starship!
+  updateStarship(id: Float!, starship: UpdateStarship!): Starship!
+  deleteStarship(id: Float!): Boolean!
+}
+
+input CreateStarship {
+  MGLT: String!
+  cargo_capacity: String!
+  consumables: String!
+  cost_in_credits: String!
+  crew: String!
+  hyperdrive_rating: String!
+  length: String!
+  manufacturer: String!
+  max_atmosphering_speed: String!
+  model: String!
+  name: String!
+  passengers: String!
+  films: String!
+  pilots: String!
+  starship_class: String!
+  url: String!
+  createdAt: String!
+  updatedAt: String!
+}
+
+input UpdateStarship {
+  MGLT: String
+  cargo_capacity: String
+  consumables: String
+  cost_in_credits: String
+  crew: String
+  hyperdrive_rating: String
+  length: String
+  manufacturer: String
+  max_atmosphering_speed: String
+  model: String
+  name: String
+  passengers: String
+  films: String
+  pilots: String
+  starship_class: String
+  url: String
+  createdAt: String
+  updatedAt: String
 }

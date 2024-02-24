@@ -1,20 +1,34 @@
-import { memoryStorage, Umzug } from 'umzug';
+import { SequelizeStorage, Umzug } from 'umzug';
 import * as path from 'path';
+import { Sequelize } from 'sequelize';
 
-const storage = memoryStorage();
+export const migrator = function (config: any) {
+  const sequelize = new Sequelize(config);
+  return new Umzug({
+    migrations: {
+      glob: [
+        '**/migrations/*.ts',
+        { cwd: path.join(__dirname, '../database') },
+      ],
+    },
+    context: sequelize,
+    storage: new SequelizeStorage({
+      sequelize,
+    }),
+    logger: undefined,
+  });
+};
 
-export const migrator = new Umzug({
-  migrations: {
-    glob: ['/migrations/*.ts', { cwd: path.join(__dirname, '../modules') }],
-  },
-  storage: storage,
-  logger: undefined,
-});
-
-export const seeder = new Umzug({
-  migrations: {
-    glob: ['/seeds/*.ts', { cwd: path.join(__dirname, '../modules') }],
-  },
-  storage: storage,
-  logger: undefined,
-});
+export const seeder = function (config: any) {
+  const sequelize = new Sequelize(config);
+  return new Umzug({
+    migrations: {
+      glob: ['**/seeds/*.ts', { cwd: path.join(__dirname, '../database') }],
+    },
+    context: sequelize,
+    storage: new SequelizeStorage({
+      sequelize,
+    }),
+    logger: undefined,
+  });
+};

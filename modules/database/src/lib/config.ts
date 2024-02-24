@@ -1,5 +1,5 @@
 import { Options } from 'sequelize/types/sequelize';
-
+import { join } from 'path';
 export const config: Options = {
   dialect: 'postgres',
   host: 'localhost',
@@ -11,13 +11,20 @@ export const config: Options = {
   // @ts-ignore
   autoLoadModels: true,
   synchronize: true,
+  define: {
+    timestamps: false,
+  },
 };
 
-// export const config: Options = {
-//   dialect: 'sqlite',
-//   storage: './db.sqlite',
-//   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-//   // @ts-ignore
-//   autoLoadModels: true,
-//   synchronize: true,
-// };
+export const testConfig: Options = {
+  dialect: 'sqlite',
+  // storage: ':memory:',
+  storage: join(__dirname, '../test.sqlite'),
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  autoLoadModels: true,
+  synchronize: false,
+  define: {
+    timestamps: false,
+  },
+};

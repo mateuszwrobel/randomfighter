@@ -12,7 +12,7 @@ import { config } from '@randomfighter/database';
     SequelizeModule.forRoot(config),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      autoSchemaFile: join(process.cwd(), './apps/api/schema.gql'),
+      autoSchemaFile: join(process.cwd(), './schema.gql'),
     }),
     StarshipsApiModule,
   ],

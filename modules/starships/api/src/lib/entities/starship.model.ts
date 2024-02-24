@@ -1,29 +1,8 @@
-import { Table, Column, Model, DataType } from 'sequelize-typescript';
+import { Column, DataType, Model, Table } from 'sequelize-typescript';
 import { Field, ObjectType } from '@nestjs/graphql';
 import { DataTypes } from 'sequelize';
+import { IStarship } from './IStarship';
 
-export interface IStarship {
-  MGLT: string;
-  cargo_capacity: string;
-  consumables: string;
-  cost_in_credits: string;
-  created: string;
-  crew: string;
-  edited: string;
-  hyperdrive_rating: string;
-  length: string;
-  manufacturer: string;
-  max_atmosphering_speed: string;
-  model: string;
-  name: string;
-  passengers: string;
-  films: string[];
-  pilots: string[];
-  starship_class: string;
-  url: string;
-  createdAt: string;
-  updatedAt: string;
-}
 @Table
 @ObjectType()
 export class Starship extends Model<IStarship> {
@@ -54,15 +33,7 @@ export class Starship extends Model<IStarship> {
 
   @Column(DataType.STRING)
   @Field()
-  created!: string;
-
-  @Column(DataType.STRING)
-  @Field()
   crew!: string;
-
-  @Column(DataType.STRING)
-  @Field()
-  edited!: string;
 
   @Column(DataType.STRING)
   @Field()
@@ -92,13 +63,13 @@ export class Starship extends Model<IStarship> {
   @Field()
   passengers!: string;
 
-  @Column(DataType.ARRAY(DataType.STRING))
-  @Field((type) => [String])
-  films!: string[];
+  @Column(DataType.STRING)
+  @Field((type) => String)
+  films!: string;
 
-  @Column(DataType.ARRAY(DataType.STRING))
-  @Field((type) => [String])
-  pilots!: string[];
+  @Column(DataType.STRING)
+  @Field((type) => String)
+  pilots!: string;
 
   @Column(DataType.STRING)
   @Field()
@@ -107,4 +78,12 @@ export class Starship extends Model<IStarship> {
   @Column(DataType.STRING)
   @Field()
   url!: string;
+
+  @Column(DataType.DATE)
+  @Field()
+  override createdAt!: string;
+
+  @Column(DataType.DATE)
+  @Field()
+  override updatedAt!: string;
 }

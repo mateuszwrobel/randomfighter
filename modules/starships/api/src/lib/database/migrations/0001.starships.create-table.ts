@@ -52,10 +52,10 @@ export async function up({ context: sequelize }: { context: Sequelize }) {
       type: DataTypes.STRING,
     },
     films: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
+      type: DataTypes.STRING,
     },
     pilots: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
+      type: DataTypes.STRING,
     },
     starship_class: {
       type: DataTypes.STRING,
