@@ -9,7 +9,8 @@ import { StarshipsApiModule } from '../starships-api.module';
 import { migrator, seeder } from './database.config';
 import * as request from 'supertest';
 import { INestApplication, Module } from '@nestjs/common';
-import { getRandomStarship } from '../database/seeds/0001.starships.add-staships';
+
+import { getRandomStarship } from '../utils/get-random-starship';
 
 function generateAppModule(module: any) {
   @Module({
