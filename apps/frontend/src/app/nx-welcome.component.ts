@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: '_randomfighter-nx-welcome',
+  selector: 'randomfighter-nx-welcome',
   standalone: true,
   imports: [CommonModule],
   template: `

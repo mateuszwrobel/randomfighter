@@ -1,0 +1,26 @@
+{
+  "name": "starship-views",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "modules/starships/views/src",
+  "prefix": "randomfighter",
+  "tags": [],
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:ng-packagr-lite",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "modules/starships/views/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "modules/starships/views/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "modules/starships/views/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    }
+  }
+}

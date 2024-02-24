@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@randomfighter/database": ["modules/database/src/index.ts"],
+      "@randomfighter/starship-views": ["modules/starships/views/src/index.ts"],
       "@randomfighter/starships-api": ["modules/starships/api/src/index.ts"]
     }
   },

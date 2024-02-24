@@ -8,9 +8,7 @@ type Starship {
   cargo_capacity: String!
   consumables: String!
   cost_in_credits: String!
-  created: String!
   crew: String!
-  edited: String!
   hyperdrive_rating: String!
   length: String!
   manufacturer: String!
@@ -18,10 +16,12 @@ type Starship {
   model: String!
   name: String!
   passengers: String!
-  films: [String!]!
-  pilots: [String!]!
+  films: String!
+  pilots: String!
   starship_class: String!
   url: String!
+  createdAt: String!
+  updatedAt: String!
 }
 
 type Query {
@@ -41,9 +41,7 @@ input CreateStarship {
   cargo_capacity: String!
   consumables: String!
   cost_in_credits: String!
-  created: String!
   crew: String!
-  edited: String!
   hyperdrive_rating: String!
   length: String!
   manufacturer: String!
@@ -51,8 +49,8 @@ input CreateStarship {
   model: String!
   name: String!
   passengers: String!
-  films: [String!]!
-  pilots: [String!]!
+  films: String!
+  pilots: String!
   starship_class: String!
   url: String!
   createdAt: String!
@@ -64,9 +62,7 @@ input UpdateStarship {
   cargo_capacity: String
   consumables: String
   cost_in_credits: String
-  created: String
   crew: String
-  edited: String
   hyperdrive_rating: String
   length: String
   manufacturer: String
@@ -74,8 +70,8 @@ input UpdateStarship {
   model: String
   name: String
   passengers: String
-  films: [String!]
-  pilots: [String!]
+  films: String
+  pilots: String
   starship_class: String
   url: String
   createdAt: String

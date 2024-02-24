@@ -1,3 +1,19 @@
+# Running the app
+## Prerequisites
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/)
+- [Node.js](https://nodejs.org/en/)
+- [Pnpm](https://pnpm.io/)
+## Running the app
+1. Clone the repository
+2. Run `pnpm install` in the root directory
+3. Run `docker-compose up` in the root directory
+4. Run `pnpm nx run-many -t serve -p api frontend` in the root directory
+5. Open `http://localhost:4200` in your browser
+6. Have fun!
+
+
+# Development
 - [x] use next.js
 - [x] use typescript
 - [x] use graphql
@@ -9,10 +25,10 @@
   - [x] add starships module
   - [x] add starships entity
   - [x] add starships table in database
-  - [ ] add starships POST endpoint
-  - [ ] add starships GET endpoint
-  - [ ] add starships PUT endpoint
-  - [ ] add starships DELETE endpoint
+  - [x] add starships POST endpoint
+  - [x] add starships GET endpoint
+  - [x] add starships PUT endpoint
+  - [x] add starships DELETE endpoint
   - [ ] add pagination
   - [ ] select random starship
   - [ ] add details view
