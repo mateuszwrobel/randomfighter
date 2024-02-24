@@ -1,16 +1,16 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title>{{ starship.name }}</mat-card-title>
-    <mat-card-subtitle>{{ starship.model }}</mat-card-subtitle>
+    <mat-card-title>{{ starship().name }}</mat-card-title>
+    <mat-card-subtitle>{{ starship().model }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content class="mat-body">
-    <p>Manufacturer: {{ starship.manufacturer }}</p>
-    <p>Cost in credits: {{ starship.cost_in_credits }}</p>
-    <p>Length: {{ starship.length }}</p>
-    <p>Max atmosphering speed: {{ starship.max_atmosphering_speed }}</p>
-    <p>Crew: {{ starship.crew }}</p>
-    <p>Passengers: {{ starship.passengers }}</p>
-    <p>Cargo capacity: {{ starship.cargo_capacity }}</p>
-    <p>Starship class: {{ starship.starship_class }}</p>
+    <p>Manufacturer: {{ starship().manufacturer }}</p>
+    <p>Cost in credits: {{ starship().cost_in_credits }}</p>
+    <p>Length: {{ starship().length }}</p>
+    <p>Max atmosphering speed: {{ starship().max_atmosphering_speed }}</p>
+    <p>Crew: {{ starship().crew }}</p>
+    <p>Passengers: {{ starship().passengers }}</p>
+    <p>Cargo capacity: {{ starship().cargo_capacity }}</p>
+    <p>Starship class: {{ starship().starship_class }}</p>
   </mat-card-content>
 </mat-card>

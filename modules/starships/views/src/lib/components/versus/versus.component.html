@@ -1,0 +1,24 @@
+<div>
+  <mat-form-field appearance="fill">
+    <mat-label>Select Starship 1</mat-label>
+    <mat-select (selectionChange)="onStarship1Change($event.value)" [(value)]="selected()[0]">
+      <mat-option *ngFor="let starship of starships()" [value]="starship.id">{{ starship.name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Select Starship 2</mat-label>
+    <mat-select (selectionChange)="onStarship2Change($event.value)" [(value)]="selected()[1]">
+      <mat-option *ngFor="let starship of starships()" [value]="starship.id">{{ starship.name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<mat-grid-list cols="2" [gutterSize]="4">
+  <mat-grid-tile>
+  <randomfighter-details *ngIf="selectedStarship1()" [starship]="selectedStarship1()"></randomfighter-details>
+    </mat-grid-tile>
+  <mat-grid-tile>
+  <randomfighter-details *ngIf="selectedStarship2()" [starship]="selectedStarship2()"></randomfighter-details>
+  </mat-grid-tile>
+</mat-grid-list>

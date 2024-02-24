@@ -1,5 +1,6 @@
+export type StarshipId = number;
 export interface IStarship {
-  id?: number;
+  id?: StarshipId;
   MGLT: string;
   cargo_capacity: string;
   consumables: string;

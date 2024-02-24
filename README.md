@@ -31,7 +31,7 @@
   - [x] add starships DELETE endpoint
   - [ ] add pagination
   - [ ] select random starship
-  - [ ] add details view
+  - [x] add details view
 
         The app should render the attributes from the resource in a simple web page
   - [ ] add starship vs starship view

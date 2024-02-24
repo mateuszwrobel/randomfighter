@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  input,
+  Input,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IStarship } from '@randomfighter/starships-api';
 import { MatCardModule } from '@angular/material/card';
@@ -11,5 +17,5 @@ import { MatCardModule } from '@angular/material/card';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DetailsComponent {
-  @Input() starship!: IStarship;
+  starship = input.required<Required<IStarship>>();
 }
