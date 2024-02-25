@@ -7,6 +7,7 @@ import {
 import { VersusComponent } from './versus.component';
 
 import { getRandomStarship } from 'modules/starships/api/src/lib/utils/get-random-starship';
+import { withId } from 'modules/starships/api/src/lib/utils/with-id';
 import { IStarship } from 'modules/starships/api/src/lib/entities/IStarship';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { InputSignal } from '@angular/core';
@@ -38,11 +39,6 @@ const meta: Meta<VersusComponent> = {
 export default meta;
 type Story = StoryObj<VersusComponent>;
 
-function withId(fun: () => IStarship): () => Required<IStarship> {
-  return function () {
-    return { ...fun(), id: Math.floor(Math.random() * 1000) };
-  };
-}
 const starships: Required<IStarship>[] = Array.from(
   { length: 10 },
   withId(getRandomStarship)

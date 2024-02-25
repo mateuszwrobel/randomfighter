@@ -14,11 +14,11 @@
   </mat-form-field>
 </div>
 
-<mat-grid-list cols="2" [gutterSize]="4">
-  <mat-grid-tile>
-  <randomfighter-details *ngIf="selectedStarship1()" [starship]="selectedStarship1()"></randomfighter-details>
-    </mat-grid-tile>
-  <mat-grid-tile>
-  <randomfighter-details *ngIf="selectedStarship2()" [starship]="selectedStarship2()"></randomfighter-details>
-  </mat-grid-tile>
-</mat-grid-list>
+<div class="starships">
+  <div class="starship-details">
+    <randomfighter-details *ngIf="selectedStarship1()" [starship]="selectedStarship1()"></randomfighter-details>
+  </div>
+  <div>
+    <randomfighter-details *ngIf="selectedStarship2()" [starship]="selectedStarship2()"></randomfighter-details>
+  </div>
+</div>

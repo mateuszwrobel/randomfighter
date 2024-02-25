@@ -53,11 +53,10 @@ export class VersusComponent {
   );
 
   onStarship1Change(id: StarshipId): void {
-    console.log('debug');
     this.selectedChange.emit([id, this.selected()[1]]);
   }
 
   onStarship2Change(id: StarshipId): void {
-    this.selectedChange.emit([id, this.selected()[1]]);
+    this.selectedChange.emit([this.selected()[0], id]);
   }
 }

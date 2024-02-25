@@ -48,14 +48,35 @@ describe('StarshipsStore', () => {
     component = fixture.componentInstance;
     store = TestBed.inject(StarshipsStore);
     apollo = TestBed.inject(Apollo);
-    fixture.detectChanges();
+    // fixture.detectChanges();
   });
 
   it('should create the store', () => {
     expect(store).toBeTruthy();
   });
 
-  it('should load starships', fakeAsync(() => {}));
+  it('should load starships', fakeAsync(() => {
+    jest.spyOn(apollo, 'query').mockImplementation((options: any) => {
+      return of({
+        data: { getAllStarships: mockStarships },
+        loading: false,
+        networkStatus: 7,
+        stale: false,
+      });
+    });
 
-  it('should handle error', fakeAsync(() => {}));
+    expect(store.starships()).toEqual(mockStarships);
+    expect(store.state()).toEqual('loaded');
+  }));
+
+  it('should handle error', fakeAsync(() => {
+    const error = new Error('Error loading starships');
+    jest.spyOn(apollo, 'query').mockImplementation((options: any) => {
+      throw error;
+    });
+
+    expect(store.starships()).toEqual([]);
+    expect(store.state()).toEqual('error');
+    expect(store.error()).toEqual(error);
+  }));
 });

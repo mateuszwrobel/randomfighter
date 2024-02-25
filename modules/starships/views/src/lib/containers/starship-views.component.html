@@ -1,1 +1,4 @@
-<randomfighter-versus [starships]="store.starships()" [selected]="[null, null]"></randomfighter-versus>
+<ng-container *ngIf="gameStore.state() === 'game-over'">
+  <div>Winner is Player {{gameStore.winner()+1}}</div>
+</ng-container>
+<randomfighter-versus [starships]="store.starships()" [selected]="store.selected()" (selectedChange)="store.updateSelected($event); gameStore.updateSelected($event) "></randomfighter-versus>
