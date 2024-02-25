@@ -1,5 +1,5 @@
 import { Route } from '@angular/router';
-import { StarshipViewsComponent } from './starship-views/starship-views.component';
+import { StarshipViewsComponent } from './containers/starship-views.component';
 
 export const starshipViewsRoutes: Route[] = [
   { path: '', component: StarshipViewsComponent },

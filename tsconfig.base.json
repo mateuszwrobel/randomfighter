@@ -17,7 +17,10 @@
     "paths": {
       "@randomfighter/database": ["modules/database/src/index.ts"],
       "@randomfighter/starship-views": ["modules/starships/views/src/index.ts"],
-      "@randomfighter/starships-api": ["modules/starships/api/src/index.ts"]
+      "@randomfighter/starships-api": ["modules/starships/api/src/index.ts"],
+      "@randomfighter/starships-api-tests": [
+        "modules/starships/api/src/lib/tests"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"],
