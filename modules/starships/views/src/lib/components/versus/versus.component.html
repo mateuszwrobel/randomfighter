@@ -1,24 +1,16 @@
-<div>
-  <mat-form-field appearance="fill">
-    <mat-label>Select Starship 1</mat-label>
-    <mat-select (selectionChange)="onStarship1Change($event.value)" [(value)]="selected()[0]">
-      <mat-option *ngFor="let starship of starships()" [value]="starship.id">{{ starship.name }}</mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <mat-form-field appearance="fill">
-    <mat-label>Select Starship 2</mat-label>
-    <mat-select (selectionChange)="onStarship2Change($event.value)" [(value)]="selected()[1]">
-      <mat-option *ngFor="let starship of starships()" [value]="starship.id">{{ starship.name }}</mat-option>
-    </mat-select>
-  </mat-form-field>
-</div>
-
 <div class="starships">
   <div class="starship-details">
-    <randomfighter-details *ngIf="selectedStarship1()" [starship]="selectedStarship1()"></randomfighter-details>
+    <randomfighter-player-hud
+      [starships]="starships()"
+      [selected]="selected()[0]"
+      (selectedChange)="onStarship1Change($event)"
+    ></randomfighter-player-hud>
   </div>
-  <div>
-    <randomfighter-details *ngIf="selectedStarship2()" [starship]="selectedStarship2()"></randomfighter-details>
+  <div class="starship-details">
+    <randomfighter-player-hud
+      [starships]="starships()"
+      [selected]="selected()[1]"
+      (selectedChange)="onStarship2Change($event)"
+    ></randomfighter-player-hud>
   </div>
 </div>

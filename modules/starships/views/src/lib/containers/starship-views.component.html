@@ -1,4 +1,33 @@
 <ng-container *ngIf="gameStore.state() === 'game-over'">
-  <div>Winner is Player {{gameStore.winner()+1}}</div>
+  <div>Winner is Player {{ gameStore.winner() + 1 }}</div>
 </ng-container>
-<randomfighter-versus [starships]="store.starships()" [selected]="store.selected()" (selectedChange)="store.updateSelected($event); gameStore.updateSelected($event) "></randomfighter-versus>
+<div>
+  <randomfighter-select-resource
+    [disabled]="gameStore.state() !== 'initial'"
+    [selected]="gameStore.resource()"
+    (selectedChange)="onResourceSelected($event)"
+  ></randomfighter-select-resource>
+</div>
+
+<div *ngIf="gameStore.state() === 'playing'" class="game-view">
+  <div>
+    <header>
+      <h1 class="mat-headline-3">Player 1</h1>
+    </header>
+    <randomfighter-player-hud
+      [starships]="store.starships()"
+      [selected]="gameStore.selected()[0]"
+      (selectedChange)="onStarship1Change($event)"
+    ></randomfighter-player-hud>
+  </div>
+  <div>
+    <header>
+      <h1 class="mat-headline-3">Player 2</h1>
+    </header>
+    <randomfighter-player-hud
+      [starships]="store.starships()"
+      [selected]="gameStore.selected()[1]"
+      (selectedChange)="onStarship2Change($event)"
+    ></randomfighter-player-hud>
+  </div>
+</div>

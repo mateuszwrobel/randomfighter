@@ -10,10 +10,10 @@ import { inject, InjectionToken } from '@angular/core';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { filter, pipe, tap } from 'rxjs';
 import { StarshipsStore } from '../starships/starships.store';
+import { ResourcesKeys } from '../../types/resources';
 
 type Selected = [number | null, number | null];
 type Score = [number, number];
-type Resource = keyof IStarship;
 type GameInitialState = {
   selected: Selected;
   score: Score;
@@ -28,7 +28,7 @@ type GamePlayingState = {
   score: Score;
   winner: null;
   starshipsPlayed: StarshipId[];
-  resource: Resource;
+  resource: ResourcesKeys;
   state: 'playing';
 };
 
@@ -37,7 +37,7 @@ type GameOverState = {
   score: Score;
   winner: 0 | 1;
   starshipsPlayed: StarshipId[];
-  resource: keyof IStarship;
+  resource: ResourcesKeys;
   state: 'game-over';
 };
 
@@ -60,18 +60,17 @@ export const GameStore = signalStore(
   withState(() => inject(GAME_STATE)),
   withMethods((store, starshipStore = inject(StarshipsStore)) => ({
     updateSelected: (selected: Selected) => {
-      console.log(selected);
       patchState(store, { selected });
     },
-    updateResource: (resource: Resource) => {
+    updateResource: (resource: ResourcesKeys) => {
       patchState(store, { resource });
     },
-    startGame: rxMethod<Resource | null>(
+    startGame: rxMethod<ResourcesKeys | null>(
       pipe(
         filter((resource) => resource !== null),
         tap((resource) => {
           patchState(store, {
-            resource: resource as Resource,
+            resource: resource as ResourcesKeys,
             state: 'playing',
           });
         })
@@ -81,7 +80,6 @@ export const GameStore = signalStore(
       pipe(
         filter((selected) => selected[0] !== null && selected[1] !== null),
         tap((selected) => {
-          console.log(starshipStore.starships(), selected);
           const ship1 = starshipStore
             .starships()
             .find((starship) => starship.id === selected[0]) as IStarship;
@@ -89,17 +87,17 @@ export const GameStore = signalStore(
             .starships()
             .find((starship) => starship.id === selected[1]) as IStarship;
 
-          const resource = (store.resource() as Resource) || 'cost_in_credits';
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
-          // const a = 1;
+          const resource = store.resource() as ResourcesKeys;
           const winner =
             Number(ship1[resource]) > Number(ship2[resource]) ? 0 : 1;
-          console.log(winner, resource, ship1[resource], ship2[resource]);
           patchState(store, {
             state: 'game-over',
             winner,
             starshipsPlayed: [...store.starshipsPlayed(), ...selected],
+            score: [
+              store.score()[0] + (winner === 0 ? 1 : 0),
+              store.score()[1] + (winner === 1 ? 1 : 0),
+            ],
           } as GameOverState);
         })
       )

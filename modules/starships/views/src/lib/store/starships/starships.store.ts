@@ -21,31 +21,26 @@ import {
 } from 'rxjs';
 import { tapResponse } from '@ngrx/operators';
 
-type Selected = [number | null, number | null];
 type StarhsipsInitialState = {
   starships: [];
-  selected: Selected;
   state: 'initial';
   error: null;
 };
 
 type StarshipsLoadingState = {
   starships: [];
-  selected: Selected;
   state: 'loading';
   error: null;
 };
 
 type StarshipsLoadedState = {
   starships: IStarship[];
-  selected: Selected;
   state: 'loaded';
   error: null;
 };
 
 type StarshipsErrorState = {
   starships: [];
-  selected: Selected;
   state: 'error';
   error: any;
 };
@@ -58,7 +53,6 @@ type StarshipsState =
 
 const initialState: StarshipsLoadingState = {
   starships: [],
-  selected: [null, null],
   state: 'loading',
   error: null,
 };
@@ -96,9 +90,6 @@ export const StarshipsStore = signalStore(
         })
       )
     ),
-    updateSelected: (selected: Selected) => {
-      patchState(store, { selected });
-    },
   })),
   withHooks({
     onInit({ loadStarships, state }) {

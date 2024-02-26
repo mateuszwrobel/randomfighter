@@ -1,0 +1,16 @@
+<mat-form-field appearance="fill">
+  <mat-label>Select Starship</mat-label>
+  <mat-select
+    (selectionChange)="onStarshipChange($event.value)"
+    [value]="selected()"
+  >
+    <mat-option *ngFor="let starship of starships()" [value]="starship.id">{{
+      starship.name
+    }}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<randomfighter-details
+  *ngIf="selectedStarship()"
+  [starship]="selectedStarship()"
+></randomfighter-details>

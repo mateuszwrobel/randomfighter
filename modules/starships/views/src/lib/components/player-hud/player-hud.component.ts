@@ -4,7 +4,10 @@ import {
   computed,
   EventEmitter,
   input,
+  Input,
+  InputSignal,
   Output,
+  signal,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IStarship, StarshipId } from '@randomfighter/starships-api';
@@ -14,10 +17,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatGridList, MatGridTile } from '@angular/material/grid-list';
-import { PlayerHudComponent } from '../player-hud/player-hud.component';
 
 @Component({
-  selector: 'randomfighter-versus',
+  selector: 'randomfighter-player-hud',
   standalone: true,
   imports: [
     CommonModule,
@@ -29,24 +31,21 @@ import { PlayerHudComponent } from '../player-hud/player-hud.component';
     FormsModule,
     MatGridList,
     MatGridTile,
-    PlayerHudComponent,
   ],
-  templateUrl: './versus.component.html',
-  styleUrls: ['./versus.component.scss'],
+  templateUrl: './player-hud.component.html',
+  styleUrls: ['./player-hud.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class VersusComponent {
+export class PlayerHudComponent {
   readonly starships = input.required<Required<IStarship>[]>();
-  readonly selected = input.required<[StarshipId | null, StarshipId | null]>();
-  @Output() selectedChange = new EventEmitter<
-    [StarshipId | null, StarshipId | null]
-  >();
+  readonly selected = input.required<StarshipId | null>();
+  @Output() selectedChange = new EventEmitter<StarshipId>();
 
-  onStarship1Change(id: StarshipId): void {
-    this.selectedChange.emit([id, this.selected()[1]]);
-  }
+  readonly selectedStarship = computed(() =>
+    this.starships().find((starship) => starship.id === this.selected())
+  );
 
-  onStarship2Change(id: StarshipId): void {
-    this.selectedChange.emit([this.selected()[0], id]);
+  onStarshipChange(id: StarshipId): void {
+    this.selectedChange.emit(id);
   }
 }
