@@ -3,10 +3,12 @@
   <mat-select
     (selectionChange)="onStarshipChange($event.value)"
     [value]="selected()"
+    data-testid="starship-select"
   >
     <mat-option
       *ngFor="let starship of starshipsHack()"
       [value]="starship.id"
+      [attr.data-testid]="'starship-option' + starship.id"
       >{{ starship.name }}</mat-option
     >
   </mat-select>

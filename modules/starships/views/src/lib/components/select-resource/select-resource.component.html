@@ -4,9 +4,13 @@
     (selectionChange)="onResourceSelected($event.value)"
     [value]="selected()"
     [disabled]="disabled()"
+    data-testid="resource-select"
   >
-    <mat-option *ngFor="let resource of resources" [value]="resource.value">{{
-      resource.label
-    }}</mat-option>
+    <mat-option
+      *ngFor="let resource of resources"
+      [value]="resource.value"
+      [attr.data-testid]="'resource-option-' + resource.value"
+      >{{ resource.label }}</mat-option
+    >
   </mat-select>
 </mat-form-field>

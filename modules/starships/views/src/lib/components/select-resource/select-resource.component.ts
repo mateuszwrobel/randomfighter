@@ -10,11 +10,19 @@ import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatOption } from '@angular/material/autocomplete';
 import { MatSelect } from '@angular/material/select';
 import { resources, ResourcesKeys } from '../../types/resources';
+import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'randomfighter-select-resource',
   standalone: true,
-  imports: [CommonModule, MatFormField, MatLabel, MatOption, MatSelect],
+  imports: [
+    CommonModule,
+    MatFormField,
+    MatLabel,
+    MatOption,
+    MatSelect,
+    MatButton,
+  ],
   templateUrl: './select-resource.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

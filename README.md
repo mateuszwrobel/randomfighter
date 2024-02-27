@@ -34,13 +34,13 @@
   - [x] add details view
 
         The app should render the attributes from the resource in a simple web page
-  - [ ] add starship vs starship view
-  - [ ] add compare starship view with information about the winner
+  - [x] add starship vs starship view
+  - [x] add compare starship view with information about the winner
       
         Once two cards are displayed, the app should declare one of the cards a winner based on the higher common attribute.
         Having displayed the winning card, the user should be able to play
-  - [ ] add score counter
+  - [x] add score counter
         
         Score counter. If there are two players, left and right, show how many times each side has won
-  - [ ] add option to select which resource to play against
+  - [x] add option to select which resource to play against
   

@@ -6,7 +6,7 @@ import {
 } from '@storybook/angular';
 import { StarshipViewsComponent } from './starship-views.component';
 
-import { within } from '@storybook/testing-library';
+import { userEvent, within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { APOLLO_OPTIONS, ApolloModule } from 'apollo-angular';
@@ -47,11 +47,4 @@ type Story = StoryObj<StarshipViewsComponent>;
 
 export const StartingScreen: Story = {
   args: {},
-};
-
-export const SelectingResources: Story = {
-  play: async ({ canvasElement }) => {
-    const screen = within(canvasElement);
-    const resource = screen.getByRole('select');
-  },
 };

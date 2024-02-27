@@ -1,7 +1,12 @@
 <ng-container *ngIf="gameStore.state() === 'game-over'">
-  <div>Winner is Player {{ gameStore.winner() }}</div>
+  <h1 class="mat-headline-1">Winner is Player {{ gameStore.winner() + 1 }}</h1>
   <div>
-    <button mat-button class="mat-mdc-button" (click)="onStartGame()">
+    <button
+      mat-button
+      class="mat-mdc-button mat-button-base mat-primary"
+      (click)="onStartGame()"
+      data-testid="start-game-button"
+    >
       Start Game
     </button>
   </div>
@@ -9,31 +14,38 @@
 
 <div>
   <randomfighter-select-resource
-    *ngIf="gameStore.state() === 'initial'"
     [disabled]="gameStore.state() !== 'initial'"
     [selected]="gameStore.resource()"
     (selectedChange)="onResourceSelected($event)"
   ></randomfighter-select-resource>
 </div>
 
-<div *ngIf="gameStore.state() === 'playing'" class="game-view">
-  <div>
+<div class="game-view">
+  <div data-testid="container-player1">
     <header>
-      <h1 class="mat-headline-3">Player 1</h1>
-      <h2 class="mat-headline-4">{{ gameStore.score()[0] }}</h2>
+      <h2 class="mat-headline-6">Player 1</h2>
+      <h3 class="mat-headline-7">{{ gameStore.score()[0] }}</h3>
     </header>
     <randomfighter-player-hud
+      *ngIf="
+        gameStore.state() === 'playing' ||
+        (gameStore.state() === 'game-over' && gameStore.winner() === 0)
+      "
       [starships]="store.starships()"
       [selected]="gameStore.selected()[0]"
       (selectedChange)="onStarship1Change($event)"
     ></randomfighter-player-hud>
   </div>
-  <div>
+  <div data-testid="container-player2">
     <header>
-      <h1 class="mat-headline-3">Player 2</h1>
-      <h2 class="mat-headline-4">{{ gameStore.score()[1] }}</h2>
+      <h2 class="mat-headline-6">Player 2</h2>
+      <h3 class="mat-headline-7">{{ gameStore.score()[1] }}</h3>
     </header>
     <randomfighter-player-hud
+      *ngIf="
+        gameStore.state() === 'playing' ||
+        (gameStore.state() === 'game-over' && gameStore.winner() === 1)
+      "
       [starships]="store.starships()"
       [selected]="gameStore.selected()[1]"
       (selectedChange)="onStarship2Change($event)"

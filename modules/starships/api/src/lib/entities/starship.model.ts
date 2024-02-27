@@ -64,11 +64,11 @@ export class Starship extends Model<IStarship> {
   passengers!: string;
 
   @Column(DataType.STRING)
-  @Field((type) => String)
+  @Field()
   films!: string;
 
   @Column(DataType.STRING)
-  @Field((type) => String)
+  @Field()
   pilots!: string;
 
   @Column(DataType.STRING)
