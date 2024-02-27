@@ -15,7 +15,7 @@ type Story = StoryObj<DetailsComponent>;
 export const WithAllData: Story = {
   args: {
     starship: getRandomStarship() as unknown as InputSignal<
-      Required<IStarship>
+      Required<IStarship | null>
     >,
   },
 };

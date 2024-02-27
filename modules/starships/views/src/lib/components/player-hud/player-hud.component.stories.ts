@@ -47,14 +47,18 @@ const starships: Required<IStarship>[] = Array.from(
 
 export const SelectedStarship: Story = {
   args: {
-    starships: starships as unknown as InputSignal<Required<IStarship>[]>,
+    starships: starships as unknown as InputSignal<
+      Required<IStarship>[] | null
+    >,
     selected: starships[0].id as unknown as InputSignal<number | null>,
   },
 };
 
 export const NoSelection: Story = {
   args: {
-    starships: starships as unknown as InputSignal<Required<IStarship>[]>,
+    starships: starships as unknown as InputSignal<
+      Required<IStarship>[] | null
+    >,
     selected: null as unknown as InputSignal<number | null>,
   },
 };

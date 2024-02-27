@@ -34,7 +34,7 @@ type StarshipsLoadingState = {
 };
 
 type StarshipsLoadedState = {
-  starships: IStarship[];
+  starships: Required<IStarship>[];
   state: 'loaded';
   error: null;
 };

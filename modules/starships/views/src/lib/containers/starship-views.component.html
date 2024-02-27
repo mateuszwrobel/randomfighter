@@ -1,8 +1,15 @@
 <ng-container *ngIf="gameStore.state() === 'game-over'">
-  <div>Winner is Player {{ gameStore.winner() + 1 }}</div>
+  <div>Winner is Player {{ gameStore.winner() }}</div>
+  <div>
+    <button mat-button class="mat-mdc-button" (click)="onStartGame()">
+      Start Game
+    </button>
+  </div>
 </ng-container>
+
 <div>
   <randomfighter-select-resource
+    *ngIf="gameStore.state() === 'initial'"
     [disabled]="gameStore.state() !== 'initial'"
     [selected]="gameStore.resource()"
     (selectedChange)="onResourceSelected($event)"
@@ -13,6 +20,7 @@
   <div>
     <header>
       <h1 class="mat-headline-3">Player 1</h1>
+      <h2 class="mat-headline-4">{{ gameStore.score()[0] }}</h2>
     </header>
     <randomfighter-player-hud
       [starships]="store.starships()"
@@ -23,6 +31,7 @@
   <div>
     <header>
       <h1 class="mat-headline-3">Player 2</h1>
+      <h2 class="mat-headline-4">{{ gameStore.score()[1] }}</h2>
     </header>
     <randomfighter-player-hud
       [starships]="store.starships()"

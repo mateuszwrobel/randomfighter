@@ -14,7 +14,7 @@ import { ResourcesKeys } from '../../types/resources';
 
 type Selected = [number | null, number | null];
 type Score = [number, number];
-type GameInitialState = {
+export type GameInitialState = {
   selected: Selected;
   score: Score;
   winner: null;
@@ -23,7 +23,7 @@ type GameInitialState = {
   state: 'initial';
 };
 
-type GamePlayingState = {
+export type GamePlayingState = {
   selected: Selected;
   score: Score;
   winner: null;
@@ -32,7 +32,7 @@ type GamePlayingState = {
   state: 'playing';
 };
 
-type GameOverState = {
+export type GameOverState = {
   selected: [number, number];
   score: Score;
   winner: 0 | 1;
@@ -41,7 +41,7 @@ type GameOverState = {
   state: 'game-over';
 };
 
-type GameState = GameInitialState | GamePlayingState | GameOverState;
+export type GameState = GameInitialState | GamePlayingState | GameOverState;
 
 const initialState: GameState = {
   selected: [null, null],

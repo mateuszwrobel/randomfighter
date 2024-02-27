@@ -37,12 +37,18 @@ import { MatGridList, MatGridTile } from '@angular/material/grid-list';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlayerHudComponent {
-  readonly starships = input.required<Required<IStarship>[]>();
+  readonly starships = input.required<Required<IStarship>[] | null>();
   readonly selected = input.required<StarshipId | null>();
+  readonly starshipsHack = computed(
+    () => this.starships() as Required<IStarship>[]
+  );
   @Output() selectedChange = new EventEmitter<StarshipId>();
 
-  readonly selectedStarship = computed(() =>
-    this.starships().find((starship) => starship.id === this.selected())
+  readonly selectedStarship = computed(
+    () =>
+      (this.starships() as Required<IStarship>[]).find(
+        (starship) => starship.id === this.selected()
+      ) as Required<IStarship>
   );
 
   onStarshipChange(id: StarshipId): void {

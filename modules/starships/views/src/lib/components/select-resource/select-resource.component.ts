@@ -20,7 +20,7 @@ import { resources, ResourcesKeys } from '../../types/resources';
 })
 export class SelectResourceComponent {
   readonly disabled = input<boolean>(false);
-  readonly selected = input.required<ResourcesKeys>();
+  readonly selected = input.required<ResourcesKeys | null>();
   @Output() selectedChange = new EventEmitter<ResourcesKeys>();
   resources = resources;
 

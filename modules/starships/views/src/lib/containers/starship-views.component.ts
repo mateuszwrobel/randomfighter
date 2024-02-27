@@ -1,8 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StarshipsStore } from '../store/starships/starships.store';
-import { VersusComponent } from '../components/versus/versus.component';
-import { GameStore } from '../store/game/game.store';
+import { GameState, GameStore } from '../store/game/game.store';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatOption } from '@angular/material/autocomplete';
 import { MatSelect } from '@angular/material/select';
@@ -11,12 +10,13 @@ import { PlayerHudComponent } from '../components/player-hud/player-hud.componen
 import { StarshipId } from '@randomfighter/starships-api';
 import { SelectResourceComponent } from '../components/select-resource/select-resource.component';
 import { ResourcesKeys } from '../types/resources';
+import { MatButtonToggle } from '@angular/material/button-toggle';
+import { MatButton } from '@angular/material/button';
 @Component({
   selector: 'randomfighter-starship-views',
   standalone: true,
   imports: [
     CommonModule,
-    VersusComponent,
     MatFormField,
     MatLabel,
     MatOption,
@@ -24,6 +24,8 @@ import { ResourcesKeys } from '../types/resources';
     DetailsComponent,
     PlayerHudComponent,
     SelectResourceComponent,
+    MatButtonToggle,
+    MatButton,
   ],
   templateUrl: './starship-views.component.html',
   styleUrls: ['./starship-views.component.scss'],
@@ -44,5 +46,9 @@ export class StarshipViewsComponent {
 
   onResourceSelected(resource: ResourcesKeys): void {
     this.gameStore.updateResource(resource);
+  }
+
+  onStartGame(): void {
+    this.gameStore.resetGame();
   }
 }

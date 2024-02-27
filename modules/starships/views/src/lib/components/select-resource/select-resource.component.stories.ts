@@ -43,19 +43,20 @@ type Story = StoryObj<SelectResourceComponent>;
 
 export const SelectedStarship: Story = {
   args: {
-    selected: resources[0].value as unknown as InputSignal<ResourcesKeys>,
+    selected: resources[0]
+      .value as unknown as InputSignal<ResourcesKeys | null>,
   },
 };
 
 export const NoSelection: Story = {
   args: {
-    selected: null as unknown as InputSignal<ResourcesKeys>,
+    selected: null as unknown as InputSignal<ResourcesKeys | null>,
   },
 };
 
 export const DisabledWithNoSelection: Story = {
   args: {
     disabled: true as unknown as InputSignal<boolean>,
-    selected: null as unknown as InputSignal<ResourcesKeys>,
+    selected: null as unknown as InputSignal<ResourcesKeys | null>,
   },
 };

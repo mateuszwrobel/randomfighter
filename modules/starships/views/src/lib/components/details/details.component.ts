@@ -17,5 +17,8 @@ import { MatCardModule } from '@angular/material/card';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DetailsComponent {
-  starship = input.required<Required<IStarship>>();
+  starship = input.required<Required<IStarship | null>>();
+  readonly starshipHack = computed(
+    () => this.starship() as Required<IStarship>
+  );
 }

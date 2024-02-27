@@ -48,3 +48,10 @@ type Story = StoryObj<StarshipViewsComponent>;
 export const StartingScreen: Story = {
   args: {},
 };
+
+export const SelectingResources: Story = {
+  play: async ({ canvasElement }) => {
+    const screen = within(canvasElement);
+    const resource = screen.getByRole('select');
+  },
+};
