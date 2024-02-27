@@ -51,6 +51,8 @@
   - [x] add option to select which resource to play against
   
 ## Further development
+- [ ] add better configs for apps urls and databases
+- [ ] explore unit tests for signalStore with rxMethod (currently tests don't work when combining signals with rxjs)
 - [ ] improve frontend e2e tests for CI
 - [ ] add unit tests in storybook
 - [ ] add players module to allow persisting players and their scores
@@ -58,3 +60,29 @@
 - [ ] add CI/CD
 - [ ] add docker-compose for development
 - [ ] add e2e integration tests for api
+- [ ] add error handling
+
+
+# Architecture
+## Frontend
+- [x] use Angular 17.2
+  - [x] use signals
+  - [x] use signalStore from ngrx
+  - [x] use input signals
+  - [ ] use [custom store features](https://ngrx.io/guide/signals/signal-store/custom-store-features#example-1-tracking-request-status) instead of discriminatory unions for handling states
+- [x] use Angular Material
+- [x] use Storybook for component first development and unit tests
+- [x] use Jest for unit and integration tests
+- [x] use Playwright for e2e and integration tests
+- [x] use modular architecture with feature and views modules
+- [x] use Apollo Client for GraphQL
+
+## Backend
+- [x] use NestJS
+- [x] use Postgres
+- [x] use SQLite for tests
+- [x] use sequelize, sequelize-typescript for DTO, DAO
+- [x] use umzug for migrations
+- [x] use Jest for unit and integration tests
+- [x] use supertest for api testing
+- [x] use apollo server for graphql
