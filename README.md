@@ -8,10 +8,16 @@
 1. Clone the repository
 2. Run `pnpm install` in the root directory
 3. Run `docker-compose up` in the root directory
-4. Run `pnpm nx run-many -t serve -p api frontend` in the root directory
-5. Open `http://localhost:4200` in your browser
-6. Have fun!
+4. Run `ts-node migrate-up.ts` in the `database/src/lib/scripts` directory
+5. Run `ts-node seed-up.ts` in the `database/src/lib/scripts` directory
+6. Run `pnpm nx run-many -t serve -p api frontend` in the root directory (sometimes you need to restart it because of the jest error
+7. Open `http://localhost:4200` in your browser
+8. Have fun!
 
+## Running the tests
+1. Run `pnpm nx e2e frontend --ui` in the root directory for frontend e2e tests (`api` app must be working)
+2. Run `pnpm nx run starship-views:storybook` to run storybook for starship-views (`api` app must be working)
+3. Run `pnpm nx test starships-api` to run unit tests for starships-api module
 
 # Development
 - [x] use next.js
@@ -44,3 +50,11 @@
         Score counter. If there are two players, left and right, show how many times each side has won
   - [x] add option to select which resource to play against
   
+## Further development
+- [ ] improve frontend e2e tests for CI
+- [ ] add unit tests in storybook
+- [ ] add players module to allow persisting players and their scores
+- [ ] add authentication
+- [ ] add CI/CD
+- [ ] add docker-compose for development
+- [ ] add e2e integration tests for api
