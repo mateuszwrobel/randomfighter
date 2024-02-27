@@ -61,6 +61,8 @@
 - [ ] add docker-compose for development
 - [ ] add e2e integration tests for api
 - [ ] add error handling
+- [ ] add graphql repository
+- [ ] add graphql queries typecheckign/[lsp](https://github.com/0no-co/gql.tada)
 
 
 # Architecture
@@ -76,6 +78,8 @@
 - [x] use Playwright for e2e and integration tests
 - [x] use modular architecture with feature and views modules
 - [x] use Apollo Client for GraphQL
+- [ ] use [msw](https://mswjs.io/) to mock api calls for unit and integration tests
+- [ ] use [msw](https://mswjs.io/) to mock api calls for e2e tests (for visual regression tests)
 
 ## Backend
 - [x] use NestJS
